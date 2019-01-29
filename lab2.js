@@ -1,23 +1,27 @@
-function str_len(value) {
-    var num = value.length;
-    return num;
+var colours = [];
+function addColour(colour) {
+    colours.push(colour);
+    return colours.length;
 }
-function str_len_nospaces(value) {
-    var num = value.replace(/\s+/, "").length;
-    return num;
+function listAllColours() {
+    colours.forEach(function (colour) {
+        console.log(colours);
+    });
+    function deleteColours(colour) {
+        var index = colours.indexOf(colour, 0);
+        if (index > -1) {
+            colours.splice(index, 1);
+            console.log("item " + colour + " has been deleted");
+        }
+        else {
+            console.log("item not found: " + colour);
+        }
+        return colours.length;
+    }
+    addColour("blue");
+    addColour("red");
+    addColour("orange");
+    listAllColours();
+    deleteColours("orange");
+    listAllColours();
 }
-console.log("String length with spaces and all is: " + str_len("test 1"));
-console.log("String length with spaces not included in the count: "
-    + str_len_nospaces("test 1"));
-function str_len_both(value, spaces) {
-    //note ? for optional parameter,
-    //so will default to false due to
-    //code in the function, but I could
-    //change from optional and provide
-    //a default to the parameter by writing
-}
-//note ? for optional parameter,
-//so will default to false due to
-//code in the function, but I could
-//change from optional and provide
-//a default to the parameter by writing

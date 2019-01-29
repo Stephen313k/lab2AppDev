@@ -1,27 +1,33 @@
-function str_len(value: string): number{
-let num: number = value.length;
-return num;
+let colours: Array <string> = [];
+
+function addColour(colour:string){
+    colours.push(colour);
+    return colours.length;
 }
-function str_len_nospaces(value: string): number{
-let num: number = value.replace(/\s+/, "").length;
-return num;
+
+function listAllColours(){
+    colours.forEach(function (colour){
+        console.log(colours);
+    })
+
+function deleteColours(colour:string):number{
+
+    let index:number = colours.indexOf(colour, 0);
+
+    if(index > -1){
+        colours.splice(index, 1);
+        console.log("item "+ colour +" has been deleted");
+    }else {
+        console.log("item not found: "+ colour );
+    }
+    
+    return colours.length;
+}    
+
+addColour("blue");
+addColour("red");
+addColour("orange");
+listAllColours();
+deleteColours("orange");
+listAllColours();    
 }
-console.log("String length with spaces and all is: "+str_len("test 1"));
-console.log("String length with spaces not included in the count: " +str_len_nospaces("test 1"));
-function str_len_both(value: string, spaces?: boolean): number{
-//note ? for optional parameter,
-//so will default to false due to
-//code in the function, but I could
-//change from optional and provide
-//a default to the parameter by writing
-let num: number;
-if(spaces){
-num = value.replace(/\s+/, "").length;
-}else{
-num = value.length;
-}
-return num;
-}
-console.log("Function combined: String length with spaces and all is:"+str_len_both("test 1",false));
-console.log("Function combined: String length with spaces not included in the count: "+str_len_both("test 1", true));
-console.log("Function combined: String length with spaces and all is, not setting spaces parameter so will default to false: "+str_len_both("test 1"));
